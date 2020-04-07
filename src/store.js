@@ -7,5 +7,6 @@ export const store = new Store({
     products: [],
     journey: null,
     choice: null,
-    step: 1
+    step: 1,
+    productsList: []
 });

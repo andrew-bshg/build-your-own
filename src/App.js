@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 // import { useHistory } from 'react-router'
 // import axios from "axios";
 import { store } from "./store";
@@ -28,6 +28,7 @@ function App() {
       s.groups = group;
       s.listValues = ListValues;
       s.products = products;
+      s.productsList = products;
     });
   }, []);
 
@@ -58,6 +59,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Redirect to="/" />
       </Switch>
     </div>
   );

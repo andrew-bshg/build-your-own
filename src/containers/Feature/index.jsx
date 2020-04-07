@@ -68,15 +68,20 @@ const Feature = ({ name, keyName, items }) => {
   };
   // console.log(name);
 
+  let values  = []
+  let filteredItems = []
   if (step > 1){
       console.log('productList', productList);
-      let values  = []
       productList.map(product => {
         if (!values[product[`${keyName}`]])
          values.push(product[`${keyName}`]);
       })
       console.log('VALID IDS', values);
       
+      filteredItems = items.filter(item => {
+        return values.includes(item.listItemID); 
+      })
+      console.log(filteredItems);
     }
   
   return (
@@ -89,6 +94,7 @@ const Feature = ({ name, keyName, items }) => {
           value={item.listItemID}
           label={item.listItemValue}
           clicked={onSelectChoice}
+          disabled={step > 1 ? !filteredItems.includes(item) : false}
         />
       ))}
       <p>image</p>
